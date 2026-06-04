@@ -228,19 +228,20 @@ export default function Sidebar({
             </button>
           </div>
         ) : (
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             <p className="text-xs text-slate-400 mb-2 font-medium">
               Geçmiş sohbetleri kaydetmek için giriş yapın:
             </p>
             {authError && (
-              <div className="p-3 text-[10px] text-amber-800 bg-amber-50 border border-amber-200/60 rounded-xl leading-normal text-left">
-                {authError}
+              <div className="p-3 text-[10px] text-amber-800 bg-amber-50 border border-amber-200/60 rounded-xl leading-normal text-left space-y-2">
+                <p className="font-semibold">{authError}</p>
+                <p className="text-slate-500">Iframe (AI Studio) kısıtlamaları nedeniyle Google girişi pencereleri engellenirse yeni bir sekmede açarak giriş yapabilirsiniz.</p>
               </div>
             )}
             <button
               onClick={handleGoogleSignIn}
               disabled={authLoading}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-slate-700 border border-slate-200/80 rounded-xl text-xs font-semibold hover:bg-slate-50 transition-all duration-150 active:scale-[0.98] shadow-sm"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-slate-700 border border-slate-200/80 rounded-xl text-xs font-semibold hover:bg-slate-50 transition-all duration-150 active:scale-[0.98] shadow-sm select-none cursor-pointer"
             >
               {/* Google SVG */}
               <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" width="24" height="24">
@@ -255,11 +256,25 @@ export default function Sidebar({
             <button
               onClick={handleGuestSignIn}
               disabled={authLoading}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white border border-indigo-500/10 rounded-xl text-xs font-semibold transition-all duration-150 active:scale-[0.98] shadow-md shadow-indigo-500/5"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white border border-indigo-500/10 rounded-xl text-xs font-semibold transition-all duration-150 active:scale-[0.98] shadow-md shadow-indigo-500/5 cursor-pointer"
             >
               <User className="w-3.5 h-3.5" />
               Misafir Girişi
             </button>
+
+            <div className="border-t border-slate-200/80 my-2 pt-2">
+              <a
+                href={window.location.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-indigo-700 border border-slate-200/50 rounded-xl text-xs font-bold transition-all duration-150 active:scale-[0.98] shadow-sm text-center"
+              >
+                🚀 Yeni Sekmede Aç ve Giriş Yap
+              </a>
+              <p className="text-[9px] text-slate-400 mt-1 text-center font-medium leading-relaxed">
+                Google ile girişi yeni sekmede kusursuz tamamlayabilirsiniz.
+              </p>
+            </div>
           </div>
         )}
       </div>

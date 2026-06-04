@@ -560,7 +560,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="p-6 border border-slate-200 bg-white rounded-2xl w-full text-left space-y-4 z-10 shadow-sm">
+            <div className="p-6 border border-slate-200 bg-white rounded-2xl w-full text-left space-y-4 z-10 shadow-sm animate-fade-in">
               <span className="text-[10px] font-extrabold tracking-widest uppercase text-indigo-600">YETENEKLER & ALGORİTMA</span>
               <ul className="text-xs text-slate-600 space-y-3 font-medium">
                 <li className="flex items-center gap-2.5">
@@ -580,6 +580,27 @@ export default function App() {
                   Yazılım, eğitim ve yaratıcılık modları birleşik sistem
                 </li>
               </ul>
+            </div>
+
+            {/* Google Login Iframe Solution Alert / Helper Box */}
+            <div className="p-5 border border-indigo-150 bg-indigo-50/50 rounded-2xl w-full text-left space-y-3 z-10 shadow-sm">
+              <div className="flex items-center gap-2 text-indigo-800 font-bold text-xs">
+                <Sparkles className="w-4 h-4 text-indigo-600 shrink-0" />
+                <span>Google Giriş Penceresi Engelleniyor mu?</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-normal">
+                Uygulama, AI Studio önizleme ekranında (iframe içinde) çalışırken tarayıcınız güvenlik sebebiyle Google pop-up giriş penceresini engelleyebilir veya yarım bırakabilir. Google veya Misafir Girişi ile tam ve sınırsız bir senkronizasyon deneyimi elde etmek için uygulamayı yeni bir sekmede açabilirsiniz:
+              </p>
+              <div className="pt-1">
+                <a
+                  href={window.location.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-all duration-150 active:scale-[0.98] shadow-md shadow-indigo-600/10 cursor-pointer"
+                >
+                  🚀 Uygulamayı Yeni Sekmede Aç ve Giriş Yap
+                </a>
+              </div>
             </div>
 
             <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider z-10">
