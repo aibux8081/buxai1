@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+pre, code {
+  font-family: var(--font-mono);
+}
+
+/* Custom fade animations */
+.animate-[pulse_1s_infinite_100ms] {
+  animation: pulse-bar 1s infinite 100ms alternate;
+}
+.animate-[pulse_1.2s_infinite_200ms] {
+  animation: pulse-bar 1s infinite 200ms alternate;
+}
+.animate-[pulse_0.8s_infinite_300ms] {
+  animation: pulse-bar 1s infinite 300ms alternate;
+}
+.animate-[pulse_1.1s_infinite_400ms] {
+  animation: pulse-bar 1s infinite 400ms alternate;
+}
+.animate-[pulse_0.9s_infinite_500ms] {
+  animation: pulse-bar 1s infinite 500ms alternate;
+}
+
+@keyframes pulse-bar {
+  0% {
+    height: 15%;
+  }
+  100% {
+    height: 100%;
+  }
+}

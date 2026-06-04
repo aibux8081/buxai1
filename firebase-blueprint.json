@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "chatSession": {
+      "title": "ChatSession",
+      "description": "Represents a distinct conversation thread created by a user.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who owns this chat session."
+        },
+        "title": {
+          "type": "string",
+          "description": "The human-readable title of this conversation thread."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The server-generated timestamp when this session was initialized."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The server-generated timestamp when this session was last modified."
+        }
+      },
+      "required": ["userId", "title", "createdAt", "updatedAt"]
+    },
+    "chatMessage": {
+      "title": "ChatMessage",
+      "description": "Represents an individual text statement exchanged within a chat session.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who composed this message or initiated the prompt."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "model"],
+          "description": "The role of the communicator, either the user or the assistant model."
+        },
+        "content": {
+          "type": "string",
+          "description": "The actual text body of the chat message."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The server-generated timestamp when the message was sent."
+        }
+      },
+      "required": ["userId", "role", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "chatSessions/{chatSessionId}": {
+      "schema": "chatSession",
+      "description": "A top-level collection containing all conversational sessions."
+    },
+    "chatSessions/{chatSessionId}/messages/{messageId}": {
+      "schema": "chatMessage",
+      "description": "A sub-collection holding individual statements exchanged within a specific session."
+    }
+  }
+}
