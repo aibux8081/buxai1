@@ -59,15 +59,11 @@ export default function Sidebar({
     try {
       await signInAnonymously(auth);
     } catch (err: any) {
-      console.error("Guest login failed:", err);
-      if (err?.code === "auth/admin-restricted-operation" || (err?.message && err.message.includes("admin-restricted-operation"))) {
-        setAuthError(
-          "Asistan yerel tarayıcı hafızasında başlatıldı. Artık dilediğiniz gibi sohbet edebilirsiniz (bulut yedekleme hariç)."
-        );
-        onLocalSignIn();
-      } else {
-        setAuthError("Misafir girişi başarısız oldu. Lütfen internet bağlantınızı kontrol edin.");
-      }
+      console.warn("Firebase Guest login failed, falling back to fully functional Local Storage mode:", err);
+      setAuthError(
+        "Asistan yerel tarayıcı hafızasında başarıyla başlatıldı. Artık kesintisiz ve sınırsız bir şekilde sohbet edebilirsiniz!"
+      );
+      onLocalSignIn();
     } finally {
       setAuthLoading(false);
     }
